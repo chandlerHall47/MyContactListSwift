@@ -34,12 +34,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FSc-Py-rQF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-297" y="558"/>
+            <point key="canvasLocation" x="-297" y="608"/>
         </scene>
         <!--Settings-->
         <scene sceneID="rcD-k9-aKu">
             <objects>
-                <viewController id="Ia6-72-BAH" customClass="SettingsViewController" customModule="MyContactList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ia6-72-BAH" customClass="MapViewController" customModule="MyContactList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gfU-OP-wxg">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
