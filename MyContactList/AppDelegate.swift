@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -13,8 +14,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        let settings = UserDefaults.standard
+        
+        if settings.string(forKey: Constants.kSortField) == nil {
+            settings.set("city", forKey: Constants.kSortField)
+        }
+        if settings.string(forKey: Constants.kSortDirectionAscending) == nil {
+            settings.set(true, forKey: Constants.kSortDirectionAscending)
+        }
+           settings.synchronize()
+           NSLog("Sort field: %@", settings.string(forKey: Constants.kSortField)!)
+        NSLog("Sort direction: \(settings.bool(forKey: Constants.kSortDirectionAscending))")
+   
         return true
+                
     }
 
     // MARK: UISceneSession Lifecycle
@@ -31,6 +44,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
-
+    lazy var persistentContainer: NSPersistentContainer = {
+        
+        let container = NSPersistentContainer(name: "MyContactListModel")
+        container.loadPersistentStores(completionHandler: {  (storeDescription, error) in
+            if let error = error as NSError?{
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+    
+    func saveContext () {
+        let context = persistentContainer.viewContext
+        if context.hasChanges {
+            do{
+                try context.save()
+            }catch {
+                let nserror = error as NSError
+                fatalError("unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+    }
 }
 
