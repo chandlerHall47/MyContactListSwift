@@ -73,5 +73,4 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         settings.synchronize()
         
     }
-
 }

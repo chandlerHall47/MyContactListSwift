@@ -38,6 +38,8 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
     @IBOutlet weak var sgmtEditMode: UISegmentedControl!
     @IBOutlet weak var scrollView: UIScrollView!
    
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "segueContactDate") {
             let dateController = segue.destination as! DateViewController
@@ -73,7 +75,7 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
         return true
     }
     
-    @objc func saveContact(){
+    @objc func saveContact() {
         appDelagate.saveContext()
         sgmtEditMode.selectedSegmentIndex = 0
         changedEditMode(self)

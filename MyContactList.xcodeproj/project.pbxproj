@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		57E41B57280885E400627383 /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E41B56280885E400627383 /* ContactsTableViewController.swift */; };
 		A8A6CE342806AD300075BFD8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A6CE332806AD300075BFD8 /* Constants.swift */; };
 		A8A6CE372806B89B0075BFD8 /* MyContactListModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A8A6CE352806B89B0075BFD8 /* MyContactListModel.xcdatamodeld */; };
 		A8A6CE392806C20D0075BFD8 /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A6CE382806C20D0075BFD8 /* DateViewController.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		57E41B56280885E400627383 /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
 		A8A6CE332806AD300075BFD8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A8A6CE362806B89B0075BFD8 /* MyContactListModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyContactListModel.xcdatamodel; sourceTree = "<group>"; };
 		A8A6CE382806C20D0075BFD8 /* DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				A8A6CE352806B89B0075BFD8 /* MyContactListModel.xcdatamodeld */,
 				A8D461B627FBD6B100F21DDD /* SceneDelegate.swift */,
 				A8D461BA27FBD6B100F21DDD /* Main.storyboard */,
+				57E41B56280885E400627383 /* ContactsTableViewController.swift */,
 				A8D461BD27FBD6B300F21DDD /* Assets.xcassets */,
 				A8D461BF27FBD6B300F21DDD /* LaunchScreen.storyboard */,
 				A8D461C227FBD6B300F21DDD /* Info.plist */,
@@ -281,6 +284,7 @@
 				A8D461B727FBD6B100F21DDD /* SceneDelegate.swift in Sources */,
 				A8A6CE342806AD300075BFD8 /* Constants.swift in Sources */,
 				A8A6CE372806B89B0075BFD8 /* MyContactListModel.xcdatamodeld in Sources */,
+				57E41B57280885E400627383 /* ContactsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,7 +461,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = SX788JP4S4;
+				DEVELOPMENT_TEAM = 32WQWDQSMN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyContactList/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -465,12 +469,13 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Chandler-Hall.MyContactList";
+				PRODUCT_BUNDLE_IDENTIFIER = "Adil-ContactList";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -485,7 +490,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = SX788JP4S4;
+				DEVELOPMENT_TEAM = 32WQWDQSMN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyContactList/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -493,12 +498,13 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Chandler-Hall.MyContactList";
+				PRODUCT_BUNDLE_IDENTIFIER = "Adil-ContactList";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
