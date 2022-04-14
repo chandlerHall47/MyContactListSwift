@@ -16,14 +16,36 @@ class ContactsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadDataFromDatabase()
+      //  loadDataFromDatabase()
         
-       
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewWillAppear(_ animated: Bool){
+        loadDataFromDatabase()
+        tableView.reloadData()
     }
 
-    func loadDataFromDatabase(){
+    func loadDataFromDatabase() {
+        
+        let settings = UserDefaults.standard
+        let sortField = settings.string(forKey: Constants.kSortField)
+        let sortAscending = settings.bool(forKey: Constants.kSortDirectionAscending)
+        
+        //set up core data
         let context = appDelegate.persistentContainer.viewContext
+        
+        //Set up request
         let request = NSFetchRequest<NSManagedObject>(entityName: "Contact")
+        
+        //Specify sorting
+        let sortDescriptor = NSSortDescriptor(key: sortField, ascending: sortAscending)
+        let sortDescriptorArray = [sortDescriptor]
+        
+        //Adding more descriptors to the array
+        request.sortDescriptors = sortDescriptorArray
+        
+        //Execute Request
         do{
             contacts = try context.fetch(request)
         } catch let error as NSError{
@@ -56,6 +78,7 @@ class ContactsTableViewController: UITableViewController {
 
         // Configure the cell...
         let contact = contacts[indexPath.row] as? Contact
+        
         cell.textLabel?.text = contact?.contactName
         cell.detailTextLabel?.text = contact?.city
         cell.accessoryType = .detailDisclosureButton
@@ -71,17 +94,27 @@ class ContactsTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            let contact = contacts[indexPath.row] as? Contact
+            let context = appDelegate.persistentContainer.viewContext
+            context.delete(contact!)
+            do{
+                try context.save()
+            }
+            catch {
+                fatalError("Error saving context: \(error)")
+            }
+            loadDataFromDatabase()
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.
@@ -98,6 +131,38 @@ class ContactsTableViewController: UITableViewController {
     }
     */
 
+    //Pop up alert message when clicking a contact
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedContact = contacts[indexPath.row] as? Contact
+        let name = selectedContact!.contactName!
+        let birthdate = selectedContact!.birthday!
+        
+        //MARK: Assignment Answer
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        let birthdateFinal = formatter.string(from: selectedContact!.birthday!)
+        
+        
+        let actionHandler = { (action:UIAlertAction!) -> Void in
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "ContactController") as? ContactsViewController
+            
+            controller?.currentContact = selectedContact
+            self.navigationController?.pushViewController(controller!, animated: true)
+        }
+        
+        let alertController = UIAlertController(title: "Contact Selected", message: "\(name) is Born on: \(birthdateFinal)", preferredStyle: .alert)
+        
+        let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        let actionDetails = UIAlertAction(title: "Show Details", style: .default, handler: actionHandler)
+        
+        alertController.addAction(actionCancel)
+        alertController.addAction(actionDetails)
+        present(alertController, animated: true, completion: nil)
+
+    }
+    
     
     // MARK: - Navigation
 
