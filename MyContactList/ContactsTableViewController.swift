@@ -17,6 +17,7 @@ class ContactsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadDataFromDatabase()
+        
        
     }
 
