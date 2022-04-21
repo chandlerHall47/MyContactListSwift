@@ -51,7 +51,7 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
         super.viewDidLoad()
        
         
-        
+        //Additional setup after loading the view 
         if currentContact != nil{
             txtName.text = currentContact!.contactName
             txtAddress.text = currentContact!.streetAddress

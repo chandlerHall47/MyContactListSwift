@@ -26,6 +26,8 @@ class ContactsTableViewController: UITableViewController {
         tableView.reloadData()
     }
 
+    //MARK: Sorting
+    
     func loadDataFromDatabase() {
         
         let settings = UserDefaults.standard
@@ -79,7 +81,7 @@ class ContactsTableViewController: UITableViewController {
         // Configure the cell...
         let contact = contacts[indexPath.row] as? Contact
         
-        cell.textLabel?.text = contact?.contactName
+        cell.textLabel?.text = contact?.contactName!
         cell.detailTextLabel?.text = contact?.city
         cell.accessoryType = .detailDisclosureButton
         return cell
@@ -135,7 +137,12 @@ class ContactsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedContact = contacts[indexPath.row] as? Contact
         let name = selectedContact!.contactName!
-        let birthdate = selectedContact!.birthday!
+        _ = selectedContact!.birthday!
+        let city = selectedContact!.city!
+        
+        
+        
+        
         
         //MARK: Assignment Answer
         let formatter = DateFormatter()
@@ -151,14 +158,25 @@ class ContactsTableViewController: UITableViewController {
             self.navigationController?.pushViewController(controller!, animated: true)
         }
         
-        let alertController = UIAlertController(title: "Contact Selected", message: "\(name) is Born on: \(birthdateFinal)", preferredStyle: .alert)
         
-        let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        //MARK: Professor Question
+        let actionCancelHandler = { (action:UIAlertAction!) -> Void in
+            
+            print("Hello")
+            
+        }
+        
+        let alertController = UIAlertController(title: "\(name) From \(city)", message: "\(name) is Born on: \(birthdateFinal)", preferredStyle: .alert)
+        
+        let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: actionCancelHandler)
         
         let actionDetails = UIAlertAction(title: "Show Details", style: .default, handler: actionHandler)
-        
+    
         alertController.addAction(actionCancel)
         alertController.addAction(actionDetails)
+            
+        
+     
         present(alertController, animated: true, completion: nil)
 
     }
@@ -168,7 +186,7 @@ class ContactsTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "EditContact"{
+        if segue.identifier == "EditContact" {
             let contactController = segue.destination as! ContactsViewController
             let selectedRow = self.tableView.indexPath(for: sender as! UITableViewCell)?.row
             let selectedContact = contacts[selectedRow!] as? Contact
