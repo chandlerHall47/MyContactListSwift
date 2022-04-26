@@ -136,6 +136,7 @@ class ContactsTableViewController: UITableViewController {
         let selectedContact = contacts[indexPath.row] as? Contact
         let name = selectedContact!.contactName!
         let birthdate = selectedContact!.birthday!
+        let city = selectedContact!.city!
         
         //MARK: Assignment Answer
         let formatter = DateFormatter()
@@ -151,9 +152,19 @@ class ContactsTableViewController: UITableViewController {
             self.navigationController?.pushViewController(controller!, animated: true)
         }
         
-        let alertController = UIAlertController(title: "Contact Selected", message: "\(name) is Born on: \(birthdateFinal)", preferredStyle: .alert)
+        let actionHandler2 = { (action:UIAlertAction!) -> Void in
+            print("yooo")
+        }
         
-        let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+//        let alertController = UIAlertController(title: "Contact Selected", message: "\(name) is Born on: \(birthdateFinal)", preferredStyle: .alert)
+        
+        let alertController = UIAlertController(title: "\(name) from \(city)", message: "is born on: \(birthdateFinal)", preferredStyle: .alert)
+        
+        let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: actionHandler2)
+//        let actionCancel2 = UIAlertAction(title: "cancel", style: .cancel, handler: actionHandler2 )
+                                          
+        
+
         
         let actionDetails = UIAlertAction(title: "Show Details", style: .default, handler: actionHandler)
         

@@ -11,6 +11,8 @@
 		A8A6CE342806AD300075BFD8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A6CE332806AD300075BFD8 /* Constants.swift */; };
 		A8A6CE372806B89B0075BFD8 /* MyContactListModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A8A6CE352806B89B0075BFD8 /* MyContactListModel.xcdatamodeld */; };
 		A8A6CE392806C20D0075BFD8 /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A6CE382806C20D0075BFD8 /* DateViewController.swift */; };
+		A8D3A4B82817AC1D00B81204 /* LocationDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D3A4B72817AC1D00B81204 /* LocationDemoViewController.swift */; };
+		A8D3A4BA2817CC8300B81204 /* MapPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D3A4B92817CC8300B81204 /* MapPoint.swift */; };
 		A8D461B527FBD6B100F21DDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D461B427FBD6B100F21DDD /* AppDelegate.swift */; };
 		A8D461B727FBD6B100F21DDD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D461B627FBD6B100F21DDD /* SceneDelegate.swift */; };
 		A8D461BC27FBD6B100F21DDD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8D461BA27FBD6B100F21DDD /* Main.storyboard */; };
@@ -46,6 +48,8 @@
 		A8A6CE332806AD300075BFD8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A8A6CE362806B89B0075BFD8 /* MyContactListModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyContactListModel.xcdatamodel; sourceTree = "<group>"; };
 		A8A6CE382806C20D0075BFD8 /* DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
+		A8D3A4B72817AC1D00B81204 /* LocationDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDemoViewController.swift; sourceTree = "<group>"; };
+		A8D3A4B92817CC8300B81204 /* MapPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPoint.swift; sourceTree = "<group>"; };
 		A8D461B127FBD6B100F21DDD /* MyContactList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyContactList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8D461B427FBD6B100F21DDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8D461B627FBD6B100F21DDD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -124,6 +128,8 @@
 				A8D461E627FBDC0600F21DDD /* SettingsViewController.swift */,
 				A8A6CE332806AD300075BFD8 /* Constants.swift */,
 				A8D461E827FBDC1800F21DDD /* MapViewController.swift */,
+				A8D3A4B72817AC1D00B81204 /* LocationDemoViewController.swift */,
+				A8D3A4B92817CC8300B81204 /* MapPoint.swift */,
 			);
 			path = MyContactList;
 			sourceTree = "<group>";
@@ -282,9 +288,11 @@
 				A8D461B527FBD6B100F21DDD /* AppDelegate.swift in Sources */,
 				A8D461E727FBDC0600F21DDD /* SettingsViewController.swift in Sources */,
 				A8D461B727FBD6B100F21DDD /* SceneDelegate.swift in Sources */,
+				A8D3A4B82817AC1D00B81204 /* LocationDemoViewController.swift in Sources */,
 				A8A6CE342806AD300075BFD8 /* Constants.swift in Sources */,
 				A8A6CE372806B89B0075BFD8 /* MyContactListModel.xcdatamodeld in Sources */,
 				57E41B57280885E400627383 /* ContactsTableViewController.swift in Sources */,
+				A8D3A4BA2817CC8300B81204 /* MapPoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
