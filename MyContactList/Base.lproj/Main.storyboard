@@ -204,7 +204,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="7Y3-Gu-knK">
                                                         <rect key="frame" x="0.0" y="0.0" width="179" height="59.333333333333336"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cell Phone:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pLt-sr-lEq">
+                                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cell Phone:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pLt-sr-lEq">
                                                                 <rect key="frame" x="0.0" y="0.0" width="179" height="20.333333333333332"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
@@ -281,6 +281,26 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="ROo-89-pmn">
+                                        <rect key="frame" x="8.0000000000000142" y="322" width="248.33333333333337" height="100"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L4w-lK-Jdo">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="78a-WZ-Oik"/>
+                                                    <constraint firstAttribute="height" constant="100" id="z88-Sw-VOc"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZL4-d6-84g" userLabel="Take Picture">
+                                                <rect key="frame" x="145" y="34.666666666666686" width="103.33333333333331" height="31"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Take Picture"/>
+                                                <connections>
+                                                    <action selector="changePicture:" destination="Ce0-IE-DYd" eventType="touchUpInside" id="ynr-i9-t6X"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Hu3-Ir-JiH" secondAttribute="trailing" id="6hu-Ma-hro"/>
@@ -289,6 +309,7 @@
                                     <constraint firstItem="D4u-zY-iY7" firstAttribute="width" secondItem="mzy-bK-zFr" secondAttribute="width" id="PzF-AX-c3w"/>
                                     <constraint firstItem="Hu3-Ir-JiH" firstAttribute="top" secondItem="mzy-bK-zFr" secondAttribute="top" id="hXB-mc-33j"/>
                                     <constraint firstAttribute="bottom" secondItem="Hu3-Ir-JiH" secondAttribute="bottom" id="pA7-0m-JtA"/>
+                                    <constraint firstItem="ROo-89-pmn" firstAttribute="leading" secondItem="mzy-bK-zFr" secondAttribute="leading" constant="8.0000000000000142" id="s8g-UW-sTv"/>
                                     <constraint firstItem="jZ0-4p-UwS" firstAttribute="width" secondItem="mzy-bK-zFr" secondAttribute="width" id="sWf-0o-QUn"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="D4u-zY-iY7"/>
@@ -302,6 +323,7 @@
                             <constraint firstItem="mzy-bK-zFr" firstAttribute="top" secondItem="STg-2v-hkq" secondAttribute="bottom" constant="15" id="24d-HD-ezy"/>
                             <constraint firstItem="STg-2v-hkq" firstAttribute="centerX" secondItem="Bzm-j7-taX" secondAttribute="centerX" id="5x0-iP-ANO"/>
                             <constraint firstItem="mzy-bK-zFr" firstAttribute="leading" secondItem="Bzm-j7-taX" secondAttribute="leading" id="8aS-3N-bGn"/>
+                            <constraint firstItem="aQ0-yl-u14" firstAttribute="bottom" secondItem="ROo-89-pmn" secondAttribute="bottom" constant="287" id="cZM-RL-7el"/>
                             <constraint firstItem="aQ0-yl-u14" firstAttribute="bottom" secondItem="mzy-bK-zFr" secondAttribute="bottom" id="e7f-PX-9oX"/>
                             <constraint firstAttribute="trailing" secondItem="mzy-bK-zFr" secondAttribute="trailing" constant="20" id="kkd-Jp-9I8"/>
                         </constraints>
@@ -309,7 +331,9 @@
                     <navigationItem key="navigationItem" title="Contact" id="6Ty-hO-WGX"/>
                     <connections>
                         <outlet property="btnChange" destination="xUO-qD-C7E" id="twD-bW-7g0"/>
+                        <outlet property="imgContactPicture" destination="L4w-lK-Jdo" id="BJW-NK-GBf"/>
                         <outlet property="lblBirthdate" destination="gWo-eU-qbx" id="RJk-SY-6EQ"/>
+                        <outlet property="lblPhone" destination="pLt-sr-lEq" id="bFq-Yy-jwn"/>
                         <outlet property="scrollView" destination="mzy-bK-zFr" id="zrR-hc-pJn"/>
                         <outlet property="sgmtEditMode" destination="STg-2v-hkq" id="92b-8t-Pjt"/>
                         <outlet property="txtAddress" destination="EjF-v3-ScT" id="wZX-s1-uGG"/>
