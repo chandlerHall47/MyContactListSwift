@@ -10,6 +10,7 @@ import UIKit
 class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
    
+    @IBOutlet weak var lblBattery: UILabel!
     @IBOutlet weak var swAscending: UISwitch!
     @IBOutlet weak var pckSortField: UIPickerView!
     
@@ -21,6 +22,19 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
 
         pckSortField.dataSource = self;
         pckSortField.delegate = self;
+        
+        UIDevice.current.isBatteryMonitoringEnabled = true
+        NotificationCenter.default.addObserver(self, selector: #selector(self.batteryChanged), name: UIDevice.batteryStateDidChangeNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.batteryChanged), name: UIDevice.batteryLevelDidChangeNotification, object: nil)
+        
+        self.batteryChanged()
+        
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        UIDevice.current.isBatteryMonitoringEnabled = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,6 +51,37 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
             i += 1
         }
         pckSortField.reloadComponent(0)
+        
+        
+        let device = UIDevice.current
+        print("Device Info:")
+        print("Name: \(device.name)")
+        
+        print("Model: \(device.model)")
+        print("System Name: \(device.systemName)")
+        print("System Version: \(device.systemVersion)")
+        print("Identifier: \(device.identifierForVendor)")
+        
+        let orientation: String
+        switch device.orientation {
+        case .faceDown:
+                orientation = "Face Down"
+        case .landscapeLeft:
+                orientation = "Landscape left"
+        case .portrait:
+                orientation = "Portrait"
+        case .landscapeRight:
+                orientation = "Landscape right"
+        case .faceUp:
+                orientation = "Face Up"
+        case .portraitUpsideDown:
+                orientation = "Portrait Upside Down"
+        case .unknown:
+                orientation = "Unknown Orientation"
+        @unknown default:
+                fatalError()
+        }
+        print("Orientation: \(orientation)")
     }
     
 
@@ -72,5 +117,25 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         settings.set(sortField, forKey: Constants.kSortField)
         settings.synchronize()
         
+    }
+    
+    @objc func batteryChanged(){
+        let device = UIDevice.current
+        var batteryState: String
+        switch(device.batteryState){
+        case .charging:
+            batteryState = "+"
+        case .full:
+            batteryState = "!"
+        case .unplugged:
+            batteryState = "-"
+        case .unknown:
+            batteryState = "?"
+        }
+        
+        let batteryLevelPercent = device.batteryLevel * 100
+        let batteryLevel = String(format: "%.0f%%", batteryLevelPercent)
+        let batteryStatus = "\(batteryLevel) (\(batteryState))"
+        lblBattery.text = batteryStatus
     }
 }

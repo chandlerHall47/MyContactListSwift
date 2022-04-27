@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class ContactsViewController: UIViewController, UITextFieldDelegate, DateControllerDelegate {
+class ContactsViewController: UIViewController, UITextFieldDelegate, DateControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func dateChanged(date: Date) {
         if  currentContact == nil {
             let context = appDelagate.persistentContainer.viewContext
@@ -37,7 +37,10 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
     @IBOutlet weak var btnChange: UIButton!
     @IBOutlet weak var sgmtEditMode: UISegmentedControl!
     @IBOutlet weak var scrollView: UIScrollView!
-   
+    @IBOutlet weak var imgContactPicture: UIImageView!
+    @IBOutlet weak var lblPhone: UILabel!
+    @IBOutlet weak var lblCell: UILabel!
+    
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -67,6 +70,10 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
             if currentContact!.birthday != nil{
                 lblBirthdate.text = formatter.string(from: currentContact!.birthday!)
             }
+            
+            if let imageData = currentContact?.image as? Data {
+                imgContactPicture.image = UIImage(data: imageData)
+            }
         }
         
         changedEditMode(self)
@@ -76,6 +83,13 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
         for textField in textFields {
             textField.addTarget(self, action: #selector(UITextFieldDelegate.textFieldShouldEndEditing(_:)), for: UIControl.Event.editingDidEnd)
         }
+        
+        let longPress = UILongPressGestureRecognizer.init(target: self, action: #selector(callPhone(gesture:)))
+        lblPhone.addGestureRecognizer(longPress)
+        
+        let longPress2 = UILongPressGestureRecognizer.init(target: self, action: #selector(txtCell(gesture:)))
+        lblCell.addGestureRecognizer(longPress2)
+        
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
@@ -121,6 +135,57 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
             btnChange.isHidden = false
             
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(self.saveContact))
+        }
+    }
+    
+    
+    @IBAction func changePicture(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+            let cameraController = UIImagePickerController()
+            cameraController.sourceType = .camera
+            cameraController.cameraCaptureMode = .photo
+            cameraController.delegate = self
+            cameraController.allowsEditing = true
+            self.present(cameraController, animated: true, completion: nil)
+            
+           
+        }
+        print("take picture")
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[.editedImage] as? UIImage {
+            imgContactPicture.contentMode = .scaleAspectFit
+            imgContactPicture.image = image
+            if currentContact == nil {
+                let context = appDelagate.persistentContainer.viewContext
+                currentContact = Contact(context: context)
+            }
+            currentContact?.image = image.jpegData(compressionQuality: 1.0)
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    @objc func callPhone(gesture: UILongPressGestureRecognizer) {
+        if gesture.state == .began {
+            let number = txtPhone.text
+            if number!.count > 0 {
+                let url = NSURL(string: "telprompt://\(number!)")
+                UIApplication.shared.open(url as! URL, options:  [:], completionHandler: nil)
+                print("Calling Phone Number: \(url!)")
+            }
+        }
+    }
+    
+    @objc func txtCell(gesture: UILongPressGestureRecognizer) {
+        if gesture.state == .began {
+            let number = txtCell.text
+            if number!.count > 0 {
+                let url = NSURL(string: "sms://\(number!)")
+                UIApplication.shared.open(url as! URL, options:  [:], completionHandler: nil)
+                print("Texting Phone Number: \(url!)")
+            }
         }
     }
 }
