@@ -14,7 +14,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     @IBOutlet weak var pckSortField: UIPickerView!
     
     
-    let sortOrderItems: Array<String> = ["ContactName", "City", "Birthday"]
+    let sortOrderItems: Array<String> = ["contactName", "city", "birthday"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,5 +73,4 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         settings.synchronize()
         
     }
-
 }
